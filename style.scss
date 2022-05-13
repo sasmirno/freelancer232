@@ -1,0 +1,164 @@
+// Обнуление
+*{padding:0;margin:0;border:0;}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+:focus,:active{outline:none;}
+a:focus,a:active{outline:none;}
+nav,footer,header,aside{display:block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display:none;}
+button{cursor:pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration:none;}
+a:hover{text-decoration:none;}
+ul li{list-style:none;}
+img{vertical-align:top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}
+//----------------общие настройки---------------------
+@import url(iconfont.css);
+* {
+	font-size: 15px;
+	line-height: 22px;
+	color: #9aa0ab;
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+}
+.wrapper {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 0 20px 0 20px;
+}
+@media (max-width: 480px) {
+	.wrapper {
+		padding: 0 10px 0 10px;
+	}
+}
+//----------------шапка---------------------
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	&__logo{
+		font-size: 20px;
+		line-height: 64px;
+		color: #ffffff;
+		font-weight: 700;
+		font-family: "Domine", serif;
+		text-align: center;
+		width: 140px;
+		height: 74px;
+		border-radius: 0 0 8px 8px;
+		background-color: #fa5c65;
+		padding: 20px 0 0 0;
+		z-index: 5;
+		span {
+			font-size: 25px;
+			color: #000;
+		}
+	}
+	&__menu {
+		width: 100%;
+		max-width: 460px;
+	}
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		a {
+			font-size: 14px;
+			line-height: 70px;
+			color: #263742;
+			font-weight: 700;
+			font-family: "Montserrat", sans-serif;
+			text-transform: uppercase;
+		}
+	}
+	&__socials>a {
+		font-size: 20px;
+		color: #fa5c65;
+		cursor: pointer;
+		&:not(:last-child) {
+			margin: 0 20px 0 0;
+		}
+	}
+	&__burger{
+		display: none;
+	}
+}
+//------- меню бургер---------
+@media (max-width: 767px) {
+	body.lock {
+		overflow: hidden;
+	}
+	.header {
+		&__burger {
+			display: block;
+			position: relative;
+			width: 30px;
+			height: 21px;
+			z-index: 3;
+		}
+		&__burger span {
+			position: absolute;
+			background-color: #263742;
+			left: 0;
+			width: 100%;
+			height: 3px;
+			top: 9px;
+			transition: all 0.3s ease 0s;
+		}
+		&__burger:before,
+		&__burger:after {
+			content: '';
+			background-color: #263742;
+			position: absolute;
+			width: 100%;
+			height: 3px;
+			left: 0;
+			transition: all 0.3s ease 0s;
+		}
+		&__burger:before {
+			top: 0;
+		}
+		&__burger:after {
+			bottom: 0;
+		}
+		&__burger.active span {
+			transform: scale(0);
+		}
+		&__burger.active:before {
+			transform: rotate(45deg);
+			top: 9px;
+		}
+		&__burger.active:after {
+			transform: rotate(-45deg);
+			bottom: 9px;
+		}
+		&__menu {
+			position: fixed;
+			top: -100%;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #f7f8fa;
+			padding: 80px 10px 20px 10px;
+			transition: all 0.3s ease 0s;
+			overflow: auto;
+		}
+		&__menu.active {
+			top: 0;
+		}
+		&__list {
+			display: grid;
+			justify-content: center;
+		}
+		&__list a {
+			font-size: 20px;
+		}
+		&__socials>a {
+			font-size: 30px;
+			&:not(:last-child) {
+				margin: 0 30px 0 0;
+			}
+		}
+	}
+}
